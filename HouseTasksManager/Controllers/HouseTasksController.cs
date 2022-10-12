@@ -54,7 +54,7 @@ namespace HouseTasksManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description")] HouseTask houseTask)
+        public async Task<IActionResult> Create([Bind("Id,Description,Value")] HouseTask houseTask)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace HouseTasksManager.Controllers
         }
 
         // GET: HouseTasks/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit([Bind("Id,Description,Value")] int? id)
         {
             if (id == null)
             {
