@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseTasksManager.Data;
 using HouseTasksManager.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HouseTasksManager.Controllers
 {
@@ -54,7 +55,8 @@ namespace HouseTasksManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,Value")] HouseTask houseTask)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,Description,Value,Assigned,Owner")] HouseTask houseTask)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +68,7 @@ namespace HouseTasksManager.Controllers
         }
 
         // GET: HouseTasks/Edit/5
-        public async Task<IActionResult> Edit([Bind("Id,Description,Value")] int? id)
+        public async Task<IActionResult> Edit([Bind("Id,Description,Value,Assigned,Owner")] int? id)
         {
             if (id == null)
             {
@@ -86,7 +88,7 @@ namespace HouseTasksManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Value")] HouseTask houseTask)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Value,Assigned,Owner")] HouseTask houseTask)
         {
             if (id != houseTask.Id)
             {
