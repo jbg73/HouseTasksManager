@@ -26,6 +26,12 @@ namespace HouseTasksManager.Controllers
             return View(await _context.HouseTask.ToListAsync());
         }
 
+        // GET/Profile
+        public async Task<IActionResult> Profile()
+        {
+            return View(await _context.HouseTask.ToListAsync());
+        }
+
         // GET: HouseTasks/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -67,6 +73,7 @@ namespace HouseTasksManager.Controllers
             return View(houseTask);
         }
 
+
         // GET: HouseTasks/Edit/5
         public async Task<IActionResult> Edit([Bind("Id,Description,Value,Assigned,Owner")] int? id)
         {
@@ -94,7 +101,11 @@ namespace HouseTasksManager.Controllers
             {
                 return NotFound();
             }
-
+            if (houseTask.Assigned)
+            {
+                houseTask.Owner = User.Identity.Name;
+                houseTask.Assigned = false;
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -146,6 +157,7 @@ namespace HouseTasksManager.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool HouseTaskExists(int id)
         {

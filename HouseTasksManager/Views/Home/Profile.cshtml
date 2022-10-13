@@ -1,8 +1,19 @@
 ﻿@page
-@model HouseTasksManager.Views.Home.ProfileModel
+@*@model HouseTasksManager.Views.Home.ProfileModel*@
+@model IEnumerable<HouseTasksManager.Models.HouseTask>
+
 @{
+    ViewData["Title"] = "Profile";
 }
 
 <div>
     Hello @User.Identity.Name
+    <span> These are your assigned tasks:</span>
+    @foreach (var AssignedTask in Model)
+    {
+        @if (AssignedTask.Owner != "")
+        {
+            <div>item.Description</div>
+        }
+    }
 </div>
