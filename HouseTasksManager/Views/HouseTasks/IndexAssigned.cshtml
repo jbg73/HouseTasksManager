@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HouseTasksManager.Models.HouseTask>
+
+<h4>Assigned Tasks</h4>
+
+<div class="d-flex justify-content-between">
+    <span>
+        <a asp-action="Index">Unassigned Tasks</a>
+    </span>
+    <span>
+        <a asp-action="IndexAssigned">Assigned Tasks</a>
+    </span>
+    <span>
+        <a asp-action="IndexCompleted">Completed Tasks</a>
+    </span>
+</div>
+<div>
+    <span>
+        <a asp-action="Create">Create Tasks</a>
+    </span>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (HouseTask item in Model)
+        {
+            <tr>
+                @if (item.Owner != null & !item.Finished)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td>
+                        <a asp-action="TaskCompleted" asp-route-id ="@item.Id"><i class="bi bi-check-square-fill"></i></a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

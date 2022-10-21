@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i9q7Se7urPsaSNh/+j9oI4YzqiHbmETLGFp96PlJdxXr+lnAjhOCMGDGIYh/Ld0+DIlhJ2ADbdnJ6pJWuMvggg==",
+  "dgSpecHash": "4eOCuVWBdgc+uCp0PEo0nurOGA8mt/2SW3CZhXTVw+Q/oSclMrXHxV0xJd6hqf9ujm7/ej7diawhfJw5bz6tPg==",
   "success": true,
   "projectFilePath": "C:\\Users\\javie\\HouseTaskManager\\HouseTasksManager\\HouseTasksManager\\HouseTasksManager.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,8 @@
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.30\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.30.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\3.1.30\\microsoft.aspnetcore.identity.ui.3.1.30.nupkg.sha512",
+    "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.0.0\\microsoft.aspnetcore.mvc.razor.extensions.3.0.0.nupkg.sha512",
+    "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.0.0\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.0.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
@@ -38,6 +40,7 @@
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.1.30\\microsoft.extensions.configuration.binder.3.1.30.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.30\\microsoft.extensions.dependencyinjection.3.1.30.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.30\\microsoft.extensions.dependencyinjection.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.0.0\\microsoft.extensions.dependencymodel.3.0.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.30\\microsoft.extensions.fileproviders.abstractions.3.1.30.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\3.1.30\\microsoft.extensions.fileproviders.embedded.3.1.30.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\microsoft.extensions.identity.core\\3.1.30\\microsoft.extensions.identity.core.3.1.30.nupkg.sha512",
@@ -164,6 +167,7 @@
     "C:\\Users\\javie\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
+    "C:\\Users\\javie\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

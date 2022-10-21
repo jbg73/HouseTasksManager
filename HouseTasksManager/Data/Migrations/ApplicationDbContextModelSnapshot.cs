@@ -32,6 +32,9 @@ namespace HouseTasksManager.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Finished")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Owner")
                         .HasColumnType("nvarchar(max)");
 

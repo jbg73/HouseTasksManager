@@ -20,3 +20,26 @@
     }
 </div>
 
+<div>
+    <span>These are the tasks you have completed:</span>
+    @{ 
+        int totalValue = 0;
+        @foreach (var AssignedTask in Model)
+        {
+            @if (AssignedTask.Finished & AssignedTask.Owner == User.Identity.Name)
+            {
+                <span>@AssignedTask.Description</span>
+                <span> with value: </span>
+                <span>@AssignedTask.Value</span>
+                totalValue += AssignedTask.Value;
+                <br />
+            }
+        }
+    }
+</div>
+
+<div>
+    <span>The amount of points you have is: @totalValue</span>
+</div>
+
+

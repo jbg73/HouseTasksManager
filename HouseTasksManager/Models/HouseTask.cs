@@ -12,6 +12,7 @@ namespace HouseTasksManager.Models
         public int Value { get; set; }
         public bool Assigned { get; set; }
         public string Owner { get; set; }
+        public bool Finished { get; set; }
         public HouseTask()
         {
             

@@ -4,11 +4,24 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h4>Unassigned Tasks</h4>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="d-flex justify-content-between">
+    <span>
+        <a asp-action="Index">Unassigned Tasks</a>
+    </span>
+    <span>
+        <a asp-action="IndexAssigned">Assigned Tasks</a>
+    </span>
+    <span>
+        <a asp-action="IndexCompleted">Completed Tasks</a>
+    </span>
+</div>
+<div>
+    <span>
+        <a asp-action="Create">Create New</a>
+    </span>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -22,22 +35,25 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <span>Valor: </span>
-                @for(int i = 0; i < item.Value; i++)
-                {
-                    <i class="bi bi-star-fill"></i> 
-                }
-            </td>
-            <td>
+            @if (item.Owner == null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <span>Valor: </span>
+                    @for (int i = 0; i < item.Value; i++)
+                    {
+                        <i class="bi bi-star-fill"></i>
+                    }
+                </td>
+                <td>
 
-                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-x"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-x"></i></a>
 
-            </td>
+                </td>
+            }
         </tr>
 }
     </tbody>

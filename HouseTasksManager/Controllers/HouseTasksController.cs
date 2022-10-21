@@ -26,6 +26,24 @@ namespace HouseTasksManager.Controllers
             return View(await _context.HouseTask.ToListAsync());
         }
 
+        public async Task<IActionResult> IndexAssigned()
+        {
+            return View(await _context.HouseTask.ToListAsync());
+        }
+
+        public async Task<IActionResult> TaskCompleted([Bind("Id,Description,Value,Assigned,Owner,Finished")] int id)
+        {
+            var houseTask = await _context.HouseTask.FirstOrDefaultAsync(m => m.Id == id);
+            houseTask.Finished = true;
+            await _context.SaveChangesAsync();
+            return View("IndexAssigned", await _context.HouseTask.ToListAsync());
+        }
+
+        public async Task<IActionResult> IndexCompleted()
+        {
+            return View(await _context.HouseTask.ToListAsync());
+        }
+
         // GET/Profile
         public async Task<IActionResult> Profile()
         {
@@ -62,7 +80,7 @@ namespace HouseTasksManager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Description,Value,Assigned,Owner")] HouseTask houseTask)
+        public async Task<IActionResult> Create([Bind("Id,Description,Value,Assigned,Owner,Finished")] HouseTask houseTask)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +93,7 @@ namespace HouseTasksManager.Controllers
 
 
         // GET: HouseTasks/Edit/5
-        public async Task<IActionResult> Edit([Bind("Id,Description,Value,Assigned,Owner")] int? id)
+        public async Task<IActionResult> Edit([Bind("Id,Description,Value,Assigned,Owner,Finished")] int? id)
         {
             if (id == null)
             {
@@ -95,7 +113,8 @@ namespace HouseTasksManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Value,Assigned,Owner")] HouseTask houseTask)
+        [Authorize]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Value,Assigned,Owner,Finished")] HouseTask houseTask)
         {
             if (id != houseTask.Id)
             {
