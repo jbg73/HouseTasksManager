@@ -39,6 +39,15 @@ namespace HouseTasksManager.Controllers
             return View("IndexAssigned", await _context.HouseTask.ToListAsync());
         }
 
+        public async Task<IActionResult> TaskAssigned([Bind("Id,Description,Value,Assigned,Owner,Finished")] int id)
+        {
+            var houseTask = await _context.HouseTask.FirstOrDefaultAsync(m => m.Id == id);
+            houseTask.Assigned = true;
+            houseTask.Owner = @User.Identity.Name;
+            await _context.SaveChangesAsync();
+            return View("Index", await _context.HouseTask.ToListAsync());
+        }
+
         public async Task<IActionResult> IndexCompleted()
         {
             return View(await _context.HouseTask.ToListAsync());
@@ -123,7 +132,6 @@ namespace HouseTasksManager.Controllers
             if (houseTask.Assigned)
             {
                 houseTask.Owner = User.Identity.Name;
-                houseTask.Assigned = false;
             }
             if (ModelState.IsValid)
             {

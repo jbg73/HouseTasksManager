@@ -8,38 +8,59 @@
 
 }
 
-<h3>Hello @User.Identity.Name</h3>
-<div>
-    <p> These are your assigned tasks:</p>
-    @foreach (var AssignedTask in Model)
-    {
-        @if (AssignedTask.Owner == User.Identity.Name)
-        {
-            <div>@AssignedTask.Description</div>
-        }
-    }
-</div>
-
-<div>
-    <span>These are the tasks you have completed:</span>
-    @{ 
-        int totalValue = 0;
-        @foreach (var AssignedTask in Model)
-        {
-            @if (AssignedTask.Finished & AssignedTask.Owner == User.Identity.Name)
-            {
-                <span>@AssignedTask.Description</span>
-                <span> with value: </span>
-                <span>@AssignedTask.Value</span>
-                totalValue += AssignedTask.Value;
-                <br />
+<h3 class="d-flex justify-content-center">Hello @User.Identity.Name !</h3>
+<div class="mt-3">
+    <div class="container d-flex justify-content-around">
+        <div class="col-lg-7">
+            <h5> These are your assigned tasks:</h5>
+            <div class="mt-3">
+                <ul>
+                    @foreach (var AssignedTask in Model)
+                    {
+                        @if (AssignedTask.Owner == User.Identity.Name)
+                        {
+                            <li class="list-group-item">
+                                @AssignedTask.Description
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <h5>These are the tasks you have completed</h5>
+            @{
+                int totalValue = 0;
+                <div class="mt-3">
+                    <ul>
+                        @foreach (var AssignedTask in Model)
+                        {
+                            @if (AssignedTask.Finished & AssignedTask.Owner == User.Identity.Name)
+                            {
+                                <li class="list-group-item d-flex justify-content-between">
+                                    @AssignedTask.Description
+                                    <div>
+                                        <span class="badge badge-success badge-pill">@AssignedTask.Value <i class="bi bi-star-fill"></i></span>
+                                    </div>
+                                </li>
+                                totalValue += AssignedTask.Value;
+                            }
+                        }
+                    </ul>
+                </div>
             }
-        }
-    }
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <span class="alert alert-primary">The amount of points you have is: @totalValue</span>
+    </div>
+
+    <div>
+        <h3>Possible rewards</h3>
+
+    </div>
 </div>
 
-<div>
-    <span>The amount of points you have is: @totalValue</span>
-</div>
 
 

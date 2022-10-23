@@ -1,29 +1,28 @@
 ﻿@model IEnumerable<HouseTasksManager.Models.HouseTask>
 
-<h4>Assigned Tasks</h4>
+<h4 class="text-center">Completed Tasks</h4>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mt-3">
     <span>
-        <a asp-action="Index">Unassigned Tasks</a>
+        <a class="btn btn-secondary" asp-action="Index">Unassigned Tasks</a>
     </span>
     <span>
-        <a asp-action="IndexAssigned">Assigned Tasks</a>
+        <a class="btn btn-secondary" asp-action="IndexAssigned">Assigned Tasks</a>
     </span>
     <span>
-        <a asp-action="IndexCompleted">Completed Tasks</a>
+        <a class="btn btn-primary" asp-action="IndexCompleted">Completed Tasks</a>
     </span>
 </div>
 
-<table class="table">
+<table class="table table-bordered table-hover mt-3">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Owner)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>

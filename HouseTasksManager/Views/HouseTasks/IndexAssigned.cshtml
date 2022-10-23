@@ -1,26 +1,22 @@
 ﻿@model IEnumerable<HouseTasksManager.Models.HouseTask>
 
-<h4>Assigned Tasks</h4>
+<h4 class="text-center">Assigned Tasks</h4>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mt-3">
     <span>
-        <a asp-action="Index">Unassigned Tasks</a>
+        <a class="btn btn-secondary" asp-action="Index">Unassigned Tasks</a>
     </span>
     <span>
-        <a asp-action="IndexAssigned">Assigned Tasks</a>
+        <a class="btn btn-primary" asp-action="IndexAssigned">Assigned Tasks</a>
     </span>
     <span>
-        <a asp-action="IndexCompleted">Completed Tasks</a>
-    </span>
-</div>
-<div>
-    <span>
-        <a asp-action="Create">Create Tasks</a>
+        <a class="btn btn-secondary" asp-action="IndexCompleted">Completed Tasks</a>
     </span>
 </div>
-<table class="table">
+
+<table class="table table-bordered table-hover mt-3">
     <thead>
-        <tr>
+        <tr class="text-center">
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
@@ -42,8 +38,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Owner)
                     </td>
-                    <td>
-                        <a asp-action="TaskCompleted" asp-route-id ="@item.Id"><i class="bi bi-check-square-fill"></i></a>
+                    <td class="d-flex justify-content-center">
+                        <a class="btn btn-primary" asp-action="TaskCompleted" asp-route-id ="@item.Id">Complete</a>
                     </td>
                 }
             </tr>

@@ -1,60 +1,92 @@
 ﻿@model IEnumerable<HouseTasksManager.Models.HouseTask>
-
 @{
     ViewData["Title"] = "Index";
 }
+<body>
+    <h4 class="text-center">Unassigned Tasks</h4>
 
-<h4>Unassigned Tasks</h4>
+    <div class="d-flex justify-content-between mt-3">
+        <span>
+            <a class="btn btn-primary" asp-action="Index">Unassigned Tasks</a>
+        </span>
+        <span>
+            <a class="btn btn-secondary" asp-action="IndexAssigned">Assigned Tasks</a>
+        </span>
+        <span>
+            <a class="btn btn-secondary" asp-action="IndexCompleted">Completed Tasks</a>
+        </span>
+    </div>
+    <div class="mt-3">
+        <span>
+            <a class="btn btn-success" asp-action="Create">Create New</a>
+        </span>
+    </div>
 
-<div class="d-flex justify-content-between">
-    <span>
-        <a asp-action="Index">Unassigned Tasks</a>
-    </span>
-    <span>
-        <a asp-action="IndexAssigned">Assigned Tasks</a>
-    </span>
-    <span>
-        <a asp-action="IndexCompleted">Completed Tasks</a>
-    </span>
-</div>
-<div>
-    <span>
-        <a asp-action="Create">Create New</a>
-    </span>
-</div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Description)*@
-                Tasks List
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            @if (item.Owner == null)
+    @{
+        bool u_tasks = false;
+        foreach (var item in Model)
+        {
+            if (!item.Assigned)
             {
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <span>Valor: </span>
-                    @for (int i = 0; i < item.Value; i++)
-                    {
-                        <i class="bi bi-star-fill"></i>
-                    }
-                </td>
-                <td>
-
-                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-x"></i></a>
-
-                </td>
+                u_tasks = true;
             }
-        </tr>
-}
-    </tbody>
-</table>
+        }
+    }
+
+    @if (u_tasks)
+    {
+
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Description)*@
+                        Tasks List
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @if (item.Owner == null)
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                <span>Valor: </span>
+                                @for (int i = 0; i < item.Value; i++)
+                                {
+                                    <i class="bi bi-star-fill"></i>
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-around w-100 mr-3">
+                                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit  <i class="bi bi-pencil"></i></a>
+                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete <i class="bi bi-x"></i></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <a class="btn btn-success" asp-action="TaskAssigned" asp-route-id="@item.Id">Assign</a>
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    else
+    {
+        <div class="mt-3">
+            <h3>No Unassigned Tasks!</h3>
+        </div>
+    }
+</body>
